@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+ <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>WebComponentsサンプル</title>
+  <!-- http://www.html5rocks.com/ja/tutorials/webcomponents/template/ -->
+ </head>
+ <body>
+  <template id="mytemplate">
+   <img src="" alt="great image">
+   <div class="comment"></div>
+  </template>
+  <script>
+var t = document.querySelector('#mytemplate');
+// src をランタイムに埋める
+t.content.querySelector('img').src = 'logo.png';
+
+var clone = document.importNode(t.content, true);
+document.body.appendChild(clone);
+  </script>
+ </body>
+</html>
