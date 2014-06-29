@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+ <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>WebComponentsサンプル</title>
+ </head>
+ <body>
+  <x-foo-shadowdom></x-foo-shadowdom>
+  <script>
+var XFooProto = Object.create(HTMLElement.prototype);
+
+XFooProto.createdCallback = function() {
+  var shadow = this.createShadowRoot();
+  shadow.innerHTML = "<b>I'm in the element's Shadow DOM!</b>";
+};
+
+document.registerElement('x-foo-shadowdom', {prototype: XFooProto});
+   </script>
+ </body>
+</html>
