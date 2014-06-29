@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+ <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>WebComponentsサンプル</title>
+ </head>
+ <body>
+  <script>
+var proto = Object.create(HTMLElement.prototype);
+proto.createdCallback = function() {
+  this.innerHTML = "<b>I'm an x-foo-with-markup!</b>";
+};
+
+var XFoo = document.registerElement('x-foo', {prototype: proto});
+var xFoo = new XFoo();
+xFoo.addEventListener('click', function(e) {
+  alert('Thanks!');
+});
+document.body.appendChild(xFoo);
+  </script>
+ </body>
+</html>
