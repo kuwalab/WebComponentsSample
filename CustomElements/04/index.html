@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+ <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>WebComponentsサンプル</title>
+ </head>
+ <body>
+  <template id="sdtemplate">
+   <style>
+    p { color: orange; }
+   </style>
+  <p><content></content></p>
+  </template>
+  <x-foo-from-template>あいうえお</x-foo-from-template>
+  <x-foo-from-template>かきくけこ</x-foo-from-template>
+  <p>普通のp。</p>
+  <script>
+var proto = Object.create(HTMLElement.prototype, {
+  createdCallback: {
+    value: function() {
+      var t = document.querySelector('#sdtemplate');
+      var clone = document.importNode(t.content, true);
+      this.createShadowRoot().appendChild(clone);
+    }
+  }
+});
+document.registerElement('x-foo-from-template', {prototype: proto});
+  </script>
+ </body>
+</html>
