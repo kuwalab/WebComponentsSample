@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+ <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>WebComponentsサンプル</title>
+ </head>
+ <body>
+  <template id="template_stopwatch">
+   <div>
+    <button id="start">スタート</button><button id="stop">ストップ</button><span id="time"></span>
+   </div>
+  </template>
+  <x-stopwatch></x-stopwatch>
+  <x-stopwatch></x-stopwatch>
+  <script>
+var proto = Object.create(HTMLElement.prototype, {
+  createdCallback: {
+    value: function() {
+      var t = document.querySelector('#template_stopwatch');
+      var clone = document.importNode(t.content, true);
+
+      var $time = clone.querySelector('#time');
+      var timer, startTime;
+      clone.querySelector('#start').addEventListener('click', function() {
+        if (!timer) {
+          startTime = new Date();
+          timer = setInterval(function() {
+            var now = new Date();
+            $time.textContent = Math.floor((now.getTime() - startTime.getTime()) / 10) / 100;
+          }, 10);
+        }
+      });
+      clone.querySelector('#stop').addEventListener('click', function() {
+        if (timer) {
+          clearInterval(timer);
+          timer = null;
+        }
+      });
+
+      this.createShadowRoot().appendChild(clone);
+    }
+  }
+});
+document.registerElement('x-stopwatch', {prototype: proto});
+  </script>
+ </body>
+</html>
