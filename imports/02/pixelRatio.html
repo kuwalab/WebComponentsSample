@@ -1,0 +1,16 @@
+<script>
+var proto = Object.create(HTMLElement.prototype);
+
+proto.createdCallback = function() {
+  this.innerHTML = '<div>' +
+          '<div id="dpr"></div>' +
+          '<div id="sw"></div>' +
+          '<div id="sh"></div>' +
+          '</div>';
+  this.querySelector('#dpr').textContent = window.devicePixelRatio;
+  this.querySelector('#sw').textContent = screen.width;
+  this.querySelector('#sh').textContent = screen.height;
+};
+
+document.registerElement('pixel-ratio', { prototype: proto });
+</script>
