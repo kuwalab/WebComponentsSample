@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+ <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>WebComponentsサンプル</title>
+ </head>
+ <body>
+  <h3>h3要素</h3>
+  <div><h3>Light DOM</h3></div>
+  <script>
+var root = document.querySelector('div').createShadowRoot();
+root.innerHTML = '<style>h3{ color: red; }</style>' +
+                 '<h3>Shadow DOM</h3>';
+  </script>
+ </body>
+</html>
