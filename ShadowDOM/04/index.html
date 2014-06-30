@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+ <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>WebComponentsサンプル</title>
+ </head>
+ <body>
+  <style>
+#host::shadow span {
+  color: red;
+}
+  </style>
+
+  <div id="host">
+   <span>Light DOM</span>
+  </div>
+
+  <script>
+var host = document.querySelector('div');
+var root = host.createShadowRoot();
+root.innerHTML = "<span>Shadow DOM</span>" +
+                 "<content></content>";
+  </script>
+ </body>
+</html>
