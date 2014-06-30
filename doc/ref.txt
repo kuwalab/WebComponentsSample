@@ -1,6 +1,10 @@
 Shadow DOM
 http://www.html5rocks.com/ja/tutorials/webcomponents/shadowdom/
 
+http://www.html5rocks.com/ja/tutorials/webcomponents/shadowdom-201/
+
+http://www.html5rocks.com/ja/tutorials/webcomponents/shadowdom-301/
+
 Template
 http://www.html5rocks.com/ja/tutorials/webcomponents/template/
 
