@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ja">
+ <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>WebComponentsサンプル</title>
+ </head>
+ <body>
+  <div id="example1">Light DOM</div>
+  <script>
+var container = document.querySelector('#example1');
+var root1 = container.createShadowRoot();
+var root2 = container.createShadowRoot();
+root1.innerHTML = '<div>Root 1 FTW</div>';
+root2.innerHTML = '<div>Root 2 FTW</div>';
+   </script>
+ </body>
+</html>
