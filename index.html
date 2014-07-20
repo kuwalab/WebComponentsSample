@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+ <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>WebComponents判定</title>
+  <style>
+.support {
+  color: #00f;
+  margin-right: 0.5em;
+}
+
+.no_support {
+  color: #f00;
+  margin-right: 0.5em;
+}
+  </style>
+ </head>
+ <body>
+  <ul>
+   <li><span id="customElements"></span>Custom Elements</li>
+   <li><span id="imports"></span>HTML Imports</li>
+   <li><span id="shadowDOM"></span>Shadow DOM</li>
+   <li><span id="template"></span>Template</li>
+  </ul>
+  <script>
+var SUPPORT = '<span class="support">○</span>';
+var NO_SUPPORT = '<span class="no_support">×</span>';
+
+var customElements = document.registerElement ? SUPPORT : NO_SUPPORT;
+document.querySelector('#customElements').innerHTML = customElements;
+var imports = 'import' in document.createElement('link') ? SUPPORT : NO_SUPPORT;
+document.querySelector('#imports').innerHTML = imports;
+var shadowDOM = document.querySelector('body').createShadowRoot ? SUPPORT : NO_SUPPORT;
+document.querySelector('#shadowDOM').innerHTML = shadowDOM;
+var template = 'content' in document.createElement('template') ? SUPPORT : NO_SUPPORT;
+document.querySelector('#template').innerHTML = template;
+  </script>
+ </body>
+</html>
