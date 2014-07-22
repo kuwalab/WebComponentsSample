@@ -1,14 +1,14 @@
- <template>
-  <style>
+<template>
+ <style>
 p {
   font-size: 3em;
 }
-  </style>
-  <div>
-   <p>デバイスピクセル比: <span id="devicePixelRatio"></span></p>
-  </div>
- </template>
- <script>
+ </style>
+ <div>
+  <p>デバイスピクセル比: <span id="devicePixelRatio"></span></p>
+ </div>
+</template>
+<script>
 var ScreenInfoProto = Object.create(HTMLElement.prototype);
 var ownerDoc = document.currentScript.ownerDocument;
 var dpr = window.devicePixelRatio;
@@ -19,4 +19,4 @@ ScreenInfoProto.createdCallback = function() {
   shadow.appendChild(template.content);
 };
 var ScreenInfo = document.registerElement('screen-info', { prototype: ScreenInfoProto });
- </script>
+</script>
