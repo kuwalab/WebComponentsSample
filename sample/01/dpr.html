@@ -1,0 +1,32 @@
+<html lang="ja">
+ <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>ほげ</title>
+ </head>
+ <body>
+  <template>
+   <style>
+p {
+  font-size: 3em;
+}
+   </style>
+   <div>
+    <p>デバイスピクセル比: <span id="devicePixelRatio"></span></p>
+   </div>
+  </template>
+  <script>
+var ScreenInfoProto = Object.create(HTMLElement.prototype);
+var ownerDoc = document.currentScript.ownerDocument;
+var dpr = window.devicePixelRatio;
+ScreenInfoProto.createdCallback = function() {
+  var shadow = this.createShadowRoot();
+  var template = ownerDoc.querySelector('template');
+  template.content.querySelector('#devicePixelRatio').textContent = dpr
+  shadow.appendChild(template.content);
+};
+var ScreenInfo = document.registerElement('screen-info', { prototype: ScreenInfoProto });
+  </script>
+ </body>
+</html>
